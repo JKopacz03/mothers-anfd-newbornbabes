@@ -21,9 +21,22 @@ public class Kid {
     private Character sex;
     private String name;
     private LocalDate birthday;
-    private Double weight;
+    private Integer weight;
     private Double height;
     @ManyToOne
     @JoinColumn(name = "mother")
     private Mother mother;
+
+    @Override
+    public String toString() {
+        return "Kid{" +
+                "id=" + id +
+                ", sex=" + sex +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", mother=" + mother.getName() +
+                '}';
+    }
 }

@@ -1,6 +1,8 @@
 spring:
   datasource:
-    url: "jdbc:postgresql://localhost:5432/mother-and-newbornbabes"
     username: "postgres"
     password: "qwerty"
+    url: "jdbc:postgresql://localhost:5432/mother-and-newbornbabes"
     driver-class: "org.postgresql.Driver"
+  jpa:
+    show-sql: true
