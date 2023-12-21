@@ -15,10 +15,6 @@ public class KidService {
 
     private final KidRepository kidRepository;
 
-    public void saveKid(Kid kid){
-        kidRepository.save(kid);
-    }
-
     public HighestKidResponse getHighestBoy(){
         List<Kid> kids = kidRepository.findAll();
 

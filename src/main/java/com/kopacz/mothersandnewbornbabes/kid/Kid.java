@@ -1,10 +1,7 @@
 package com.kopacz.mothersandnewbornbabes.kid;
 
 import com.kopacz.mothersandnewbornbabes.mother.Mother;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +20,7 @@ public class Kid {
     private LocalDate birthday;
     private Integer weight;
     private Double height;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mother")
     private Mother mother;
 

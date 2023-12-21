@@ -2,6 +2,7 @@ package com.kopacz.mothersandnewbornbabes.mother;
 
 import com.kopacz.mothersandnewbornbabes.kid.Kid;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class Mother {
     private Long id;
     private String name;
     private Integer age;
-    @OneToMany(mappedBy = "mother")
+    @OneToMany(mappedBy = "mother", fetch = FetchType.EAGER)
     private List<Kid> kids;
 
     public Mother(Long id, String name, Integer age) {

@@ -14,10 +14,6 @@ public class MotherService {
 
     private final MotherRepository motherRepository;
 
-    public void saveMother(Mother mother){
-        motherRepository.save(mother);
-    }
-
     public List<String> getMothersWithChildWeightsOver4000(){
         List<Mother> mothers = motherRepository.findAll();
 
