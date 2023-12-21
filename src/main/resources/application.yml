@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    username: "postgres"
+    password: "qwerty"
+    url: "jdbc:postgresql://localhost:5432/mother-and-newbornbabes"
+    driver-class: "org.postgresql.Driver"
+  jpa:
+    hibernate:
+      validator:
+        apply-to-ddl: false
+      ddl-auto: create-drop
+    show-sql: true
