@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class MotherService {
     }
 
     public List<String> getMothersWithChildWeightsOver4000(){
-        final List<Mother> mothers = motherRepository.findAll();
+        List<Mother> mothers = motherRepository.findAll();
 
         List<Mother> mothersBelow25 = mothers.stream()
                 .filter(mother -> mother.getAge() < 25)
@@ -39,6 +40,29 @@ public class MotherService {
         return mothersWithKidsOver4000.stream()
                 .map(Mother::getName)
                 .toList();
+    }
+
+    public List<Mother> getMothersWithTwins(){
+        List<Mother> mothers = motherRepository.findAll();
+
+        List<Mother> mothersWithTwins = new ArrayList<>();
+
+        mothers.stream()
+                .forEach(mother -> {
+                    List<Kid> listOfKids = mother.getKids();
+                    List<Kid> listOfKidsWithTwins = listOfKids.stream()
+                            .collect(Collectors.groupingBy(Kid::getBirthday))
+                            .entrySet()
+                            .stream()
+                            .filter(localDateListEntry -> localDateListEntry.getValue().size() > 1)
+                            .flatMap(localDateListEntry -> localDateListEntry.getValue().stream())
+                            .toList();
+                    if(!listOfKidsWithTwins.isEmpty()){
+                        mothersWithTwins.add(mother);
+                    }
+                });
+
+        return mothersWithTwins;
     }
 
 }

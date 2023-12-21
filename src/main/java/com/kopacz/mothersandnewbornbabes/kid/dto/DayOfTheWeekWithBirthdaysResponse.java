@@ -1,14 +1,13 @@
-package com.kopacz.mothersandnewbornbabes;
+package com.kopacz.mothersandnewbornbabes.kid.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.DayOfWeek;
 
 @Data
 @AllArgsConstructor
-public class DayOfTheWeekWithBirthdays {
+public class DayOfTheWeekWithBirthdaysResponse {
     private DayOfWeek dayOfWeek;
     private Integer amountOfBirths;
 }
